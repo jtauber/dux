@@ -21,6 +21,11 @@ reducers if you want and I'm thinking of eliminating the module in favour of
 documentation tips).
 
 
+## How to write pure reducers
+
+Some tips can be found in `pure_tips.md`.
+
+
 ## Examples from egghead.io video series
 
 The implementation and the usage examples so far are mostly based on [Dan
