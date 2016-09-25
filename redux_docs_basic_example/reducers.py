@@ -1,7 +1,7 @@
 ## based on reducers.js from http://redux.js.org/docs/basics/Reducers.html
 
 
-from ..dux import combine_reducers
+from dux import combine_reducers
 
 from .actions import (
     ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER,

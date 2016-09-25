@@ -1,4 +1,4 @@
-from ..dux import Store
+from dux import Store
 
 from .reducers import todo_app
 
