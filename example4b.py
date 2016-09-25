@@ -3,15 +3,19 @@
 ## Todo list reducer version 2 based on Dan Abramov's egghead.io videos
 
 
-from dux import Action, Store
+from dux import Store
 from utils import append_item, update
 
 
 def todo(state, action):
-    if action.type == "ADD_TODO":
-        return update(action.data, {"completed": False})
-    elif action.type == "TOGGLE_TODO":
-        if state["id"] != action.data["id"]:
+    if action.get("type") == "ADD_TODO":
+        return {
+            "id": action["id"],
+            "text": action["text"],
+            "completed": False
+        }
+    elif action.get("type") == "TOGGLE_TODO":
+        if state["id"] != action["id"]:
             return state
         else:
             return update(state, {"completed": not state["completed"]})
@@ -22,16 +26,16 @@ def todo(state, action):
 def todos(state, action):
     if state is None:
         state = []
-    if action.type == "ADD_TODO":
+    if action.get("type") == "ADD_TODO":
         return append_item(state, todo(None, action))
-    elif action.type == "TOGGLE_TODO":
+    elif action.get("type") == "TOGGLE_TODO":
         return [todo(item, action) for item in state]
     else:
         return state
 
 
 before = []
-action = Action("ADD_TODO", id=0, text="Learn Redux")
+action = {"type": "ADD_TODO", "id": 0, "text": "Learn Redux"}
 after = [
     {
         "id": 0,
@@ -54,7 +58,7 @@ before = [
         "completed": False,
     },
 ]
-action = Action("TOGGLE_TODO", id=1)
+action = {"type": "TOGGLE_TODO", "id": 1}
 after = [
     {
         "id": 0,

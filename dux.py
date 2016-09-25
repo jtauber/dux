@@ -1,16 +1,6 @@
 """
-basic implementation of Redux-style store, action and combine_reducers function
+basic implementation of a Redux-style store and combine_reducers function
 """
-
-
-class Action:
-
-    def __init__(self, action_type, **data):
-        """
-        creates an action of the given type and data payload
-        """
-        self.type = action_type
-        self.data = data
 
 
 class Store:
@@ -22,7 +12,7 @@ class Store:
         self._reducer = reducer
         self._state = None
         self._listeners = []
-        self.dispatch(Action(None))
+        self.dispatch()
 
     @property
     def state(self):
@@ -31,11 +21,13 @@ class Store:
         """
         return self._state
 
-    def dispatch(self, action):
+    def dispatch(self, action=None):
         """
         dispatches the given action to trigger a state change then inform the
         subscribed listeners
         """
+        if action is None:
+            action = {}
         self._state = self._reducer(self._state, action)
         for listener in self._listeners:
             listener()
