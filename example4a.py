@@ -4,7 +4,7 @@
 
 
 from dux import Store
-from utils import append_item, update
+from utils import append_item
 
 def todos(state, action):
     if state is None:
@@ -18,7 +18,7 @@ def todos(state, action):
     elif action.get("type") == "TOGGLE_TODO":
         return [
             item if item["id"] != action["id"]
-                else update(item, {"completed": not item["completed"]})
+                else {**item, "completed": not item["completed"]}
             for item in state
         ]
     else:

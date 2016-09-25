@@ -4,7 +4,7 @@
 
 
 from dux import Store
-from utils import append_item, update
+from utils import append_item
 
 
 def todo(state, action):
@@ -18,7 +18,7 @@ def todo(state, action):
         if state["id"] != action["id"]:
             return state
         else:
-            return update(state, {"completed": not state["completed"]})
+            return {**state, "completed": not state["completed"]}
     else:
         return state
 

@@ -2,11 +2,9 @@
 
 ## Pure dictionary manipulation based on Dan Abramov's egghead.io videos
 
-from utils import update
-
 
 def toggle_todo(todo):
-    return update(todo, {"completed": not todo["completed"]})
+    return {**todo, "completed": not todo["completed"]}
 
 
 initial = {

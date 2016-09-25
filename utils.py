@@ -3,18 +3,6 @@ utilities to assist with pure functional data structure manipulation
 """
 
 
-def update(*rest):
-    """
-    takes one or more dicts as arguments and return a new dict with
-    the values of the original dicts, the last dict winning when keys are
-    common
-    """
-    d = {}
-    for d2 in rest:
-        d.update(d2)
-    return d
-
-
 def append_item(lst, item):
     """
     returns a new list equal to the given list with the item appended
