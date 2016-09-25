@@ -2,11 +2,11 @@
 
 ## Pure list manipulation based on Dan Abramov's egghead.io videos
 
-from utils import append_item, remove_item, change_item
+from utils import remove_item, change_item
 
 
 def add_counter(lst):
-    return append_item(lst, 0)
+    return [*lst, 0]
 
 
 def remove_counter(lst, index):

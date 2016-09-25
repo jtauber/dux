@@ -4,7 +4,6 @@
 
 
 from dux import Store
-from utils import append_item
 
 
 def todo(state, action):
@@ -27,7 +26,7 @@ def todos(state, action):
     if state is None:
         state = []
     if action.get("type") == "ADD_TODO":
-        return append_item(state, todo(None, action))
+        return [*state, todo(None, action)]
     elif action.get("type") == "TOGGLE_TODO":
         return [todo(item, action) for item in state]
     else:

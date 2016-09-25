@@ -4,17 +4,17 @@
 
 
 from dux import Store
-from utils import append_item
+
 
 def todos(state, action):
     if state is None:
         state = []
     if action.get("type") == "ADD_TODO":
-        return append_item(state, {
+        return [*state, {
             "id": action["id"],
             "text": action["text"],
             "completed": False
-        })
+        }]
     elif action.get("type") == "TOGGLE_TODO":
         return [
             item if item["id"] != action["id"]
